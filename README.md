@@ -1,5 +1,7 @@
 # CPU Temperature Monitor and Fan Controller
 
-## Project Overview: 
+Welcome to the final-project-HardikMinochaESE wiki!
 
-## Schedule and Issues: https://github.com/users/HardikMinochaESE/projects/1
+## You can find the required information on the following page:
+
+### Project Overview: https://github.com/cu-ecen-aeld/final-project-HardikMinochaESE/wiki/Project-Overview
