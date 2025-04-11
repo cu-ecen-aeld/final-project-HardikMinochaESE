@@ -1,3 +1,4 @@
+
 # CPU Temperature Monitor and Fan Controller
 
 Welcome to the final-project-HardikMinochaESE wiki!
@@ -6,3 +7,6 @@ Welcome to the final-project-HardikMinochaESE wiki!
 
 ### Project Overview: https://github.com/cu-ecen-aeld/final-project-HardikMinochaESE/wiki/Project-Overview
 ### Schedule and Issues: https://github.com/users/HardikMinochaESE/projects/1/views/1
+=======
+# yocto-assignments-base
+Base repository for AESD Yocto assignments
