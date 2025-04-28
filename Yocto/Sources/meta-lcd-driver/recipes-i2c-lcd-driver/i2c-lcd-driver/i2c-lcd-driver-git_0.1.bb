@@ -32,36 +32,23 @@ inherit update-rc.d module
 
 FILES:${PN} += "/lib/modules/${KERNEL_VERSION}/extra/i2c-lcd-driver.ko"
 
-INITSCRIPT_PACKAGES = "${PN}" 
-INITSCRIPT_NAME:${PN} = "i2c-lcd-driver.ko"
-
 FILES:${PN} += "/etc/init.d/i2c-lcd-driver-load-unload.sh"
 
-INITSCRIPT_PACKAGES = "${PN}" 
-INITSCRIPT_NAME:${PN} = "i2c-lcd-driver-load-unload.sh"
-
-FILES:${PN} += "/etc/init.d/S99i2clcddriver"
+FILES:${PN} += "/etc/init.d/S99cputempmonitor"
 
 INITSCRIPT_PACKAGES = "${PN}" 
-INITSCRIPT_NAME:${PN} = "S99i2clcddriver"
+INITSCRIPT_NAME:${PN} = "S99cputempmonitor"
 
-############ Thermal Bridge Package #############
+############ THERMAL BRIDGE Package #############
 
-FILES:${PN} += "/etc/init.d/thermal_lcd_bridge.sh"
 
-INITSCRIPT_PACKAGES = "${PN}" 
-INITSCRIPT_NAME:${PN} = "thermal_lcd_bridge.sh"
+FILES:${PN} += "/etc/init.d/thermal_lcd_bridge_daemon.sh"
 
-#FILES:${PN} += "/etc/init.d/thermal_bridge_start_stop.sh"
+############ PWM FAN DRIVER Package #############
 
-#INITSCRIPT_PACKAGES = "${PN}" 
-#INITSCRIPT_NAME:${PN} = "thermal_bridge_start_stop.sh"
+FILES:${PN} += "/lib/modules/${KERNEL_VERSION}/extra/pwm_fan_driver.ko"
 
-#FILES:${PN} += "/etc/init.d/S98thermalbridge"
-
-#INITSCRIPT_PACKAGES = "${PN}" 
-#INITSCRIPT_NAME:${PN} = "S98thermalbridge"
-
+####################################################
 
 # TODO: customize these as necessary for any libraries you need for your application
 # (and remove comment)
@@ -89,11 +76,12 @@ do_install () {
 	#install -d ${D}${bindir}
 	install -d ${D}/lib/modules/${KERNEL_VERSION}/extra
 	install -d ${D}/etc/init.d
-	#install -d ${D}/usr/bin
 	install -m 0755 ${S}/i2c-lcd-driver-load-unload.sh ${D}/etc/init.d
 	install -m 0755 ${S}/i2c-lcd-driver.ko ${D}/lib/modules/${KERNEL_VERSION}/extra
 	
-	install -m 0755 ${S}/thermal_lcd_bridge.sh ${D}/etc/init.d
+	install -m 0755 ${S}/pwm_fan_driver.ko ${D}/lib/modules/${KERNEL_VERSION}/extra
+	
+	install -m 0755 ${S}/thermal_lcd_bridge_daemon.sh ${D}/etc/init.d
 	#install -m 0755 ${S}/thermal_bridge_start_stop.sh ${D}/etc/init.d
 	
 	# Yocto variables ${D} and ${S} are useful here, which you can read about at 
@@ -104,7 +92,8 @@ do_install () {
 	
 	#install -m 0755 ${S}/aesdsocket ${D}${bindir}/
 	install -m 0755 ${S}/i2c-lcd-driver.ko ${D}/lib/modules
-	install -m 0755 ${S}/i2c-lcd-driver-load-unload.sh ${D}/etc/init.d/S99i2clcddriver
-	#install -m 0755 ${S}/thermal_bridge_start_stop.sh ${D}/etc/init.d/S98thermalbridge
-	
+	install -m 0755 ${S}/pwm_fan_driver.ko ${D}/lib/modules
+
+	install -m 0755 ${S}/i2c-lcd-driver-load-unload.sh ${D}/etc/init.d/S99cputempmonitor
+
 }
